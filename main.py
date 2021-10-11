@@ -42,6 +42,8 @@ def data_x_y(data_local):
     return(average_list_x,average_list_y)
 
 if __name__ == '__main__':
+    #顏色順序(需>=數據量)
+    color_and_type = ['blue','green','red','cyan','black','greenyellow','purple']
     legend_result = []
     legend_result_list = []
     #數據位置
@@ -49,12 +51,14 @@ if __name__ == '__main__':
     allFileList = os.listdir(data_path)
     fig,axes=plt.subplots(1,1)
     #讀取資料
+    j = 0
     for i in allFileList:
+        j += 1
         #機算點資料
         data_file = '.\\data\\'+i
         x, y = data_x_y(data_file)
         #圖形繪製
-        plt.plot(x, y)
+        plt.plot(x, y,color=color_and_type[j-1])
     #讀取檔案名稱
     for i in range(len(allFileList)):
         legend_result.append(re.findall(r"\w+[^.csv]", allFileList[i], re.I)[0])

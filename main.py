@@ -18,7 +18,7 @@ def data_x_y(data_local):
     #正則表達式處理數據剃除分號並分組
     for i in range(len(data)):
         #重新放入 compile_result_list中
-        compile_result_list.append(re.findall(r"\d+\.+\d+", data[i][0], re.I))
+        compile_result_list.append(re.findall(r"\-?\d+\.+\d+", data[i][0], re.I))
 
     #數據由字串轉為浮點數
     for i in range(len(compile_result_list)):
@@ -31,7 +31,7 @@ def data_x_y(data_local):
         sum_A = 0
         sum_B = 0
         #總和計算
-        for j in range(int(len(compile_result_list[0])/2)):
+        for j in range(int(len(compile_result_list[i])/2)):
             sum_A +=compile_result_list[i][2*j]
             sum_B +=compile_result_list[i][2*j+1]
         #平均計算

@@ -10,11 +10,11 @@ def data_x_y(data_local):
     with open(data_local, newline='') as f:
         reader = csv.reader(f)
         data = list(reader)
-
+    print("DATA = ",data)
     #刪除前四項數據
     for i in range(4):
         del(data[0])
-
+    print("DATA = ",data)
     #正則表達式處理數據剃除分號並分組
     for i in range(len(data)):
         #重新放入 compile_result_list中

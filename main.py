@@ -10,15 +10,15 @@ def data_x_y(data_local):
     with open(data_local, newline='') as f:
         reader = csv.reader(f)
         data = list(reader)
-    print("DATA = ",data)
+    #print("DATA_ori = ",data)
     #刪除前四項數據
     for i in range(4):
         del(data[0])
-    print("DATA = ",data)
+    #print("DATA_del = ",data)
     #正則表達式處理數據剃除分號並分組
     for i in range(len(data)):
         #重新放入 compile_result_list中
-        compile_result_list.append(re.findall(r"\-?\d+\.+\d+", data[i][0], re.I))
+        compile_result_list.append(re.findall(r"\-?\d+\.+\d+e?-?\d+", data[i][0], re.I))
 
     #數據由字串轉為浮點數
     for i in range(len(compile_result_list)):
@@ -67,14 +67,14 @@ if __name__ == '__main__':
     #格線
     plt.grid(True)
     #x座標名
-    plt.xlabel('Time(s)')
+    plt.xlabel('x')
     #y座標名
-    plt.ylabel('Temperature[℃]')
+    plt.ylabel('y')
     #刻度等分數
     axes.xaxis.set_minor_locator(AutoMinorLocator(5))
     axes.yaxis.set_minor_locator(AutoMinorLocator(5))
     #標題
-    plt.title('Laser speed 1500mm/s')
+    plt.title('title')
     #存檔位置
     plt.savefig('.\\figure\\fig.png')
     #跳出圖型視窗

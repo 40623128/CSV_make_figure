@@ -18,14 +18,15 @@ def data_x_y(data_local):
     #正則表達式處理數據剃除分號並分組
     for i in range(len(data)):
         #重新放入 compile_result_list中
-        compile_result_list.append(re.findall(r"\-?\d+\.+\d+e?-?\d+", data[i][0], re.I))
-
+        compile_result_list.append(re.findall(r"\-?\d*\.*\d*e?-?\d+", data[i][0], re.I))
+    print(compile_result_list)
     #數據由字串轉為浮點數
     for i in range(len(compile_result_list)):
         for j in range(len(compile_result_list[i])):
             compile_result_list[i][j] = float(compile_result_list[i][j])
 
     #compile_result_list[182][18]
+    #print(compile_result_list)
     #計算並排列數據
     for i in range(len(compile_result_list)):
         sum_A = 0
